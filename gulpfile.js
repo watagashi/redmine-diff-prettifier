@@ -1,16 +1,16 @@
 const gulp = require('gulp');
 const del = require('del');
 const pump = require('pump');
-const babel = require('gulp-babel');
-const fs = require('fs');
-const crx = require('gulp-crx-pack');
-const manifest = require('./extension-src/manifest.json');
 
 gulp.task('clean', () => {
   return del(['./build', './dist']);
 });
 
 gulp.task('crx', ['build', 'copy'], cb => {
+  const crx = require('gulp-crx-pack');
+  const fs = require('fs');
+  const manifest = require('./extension-src/manifest.json');
+
   del(['./dist']).then(() =>
     pump(
       [
@@ -27,6 +27,8 @@ gulp.task('crx', ['build', 'copy'], cb => {
 });
 
 gulp.task('build', cb => {
+  const babel = require('gulp-babel');
+
   pump(
     [
       gulp.src('./extension-src/*.js'),
