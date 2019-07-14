@@ -2,6 +2,9 @@
   "name": "redmineDiffPrettifier",
   "version": "0.1.0",
   "license": "MIT",
+  "engines": {
+    "node": "^8.0"
+  },
   "scripts": {
     "build": "gulp",
     "clean": "gulp clean",
