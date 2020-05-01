@@ -1,0 +1,19 @@
+version: 2.1
+orbs:
+  node: circleci/node@2.0.3
+jobs:
+  build-and-clean:
+    executor:
+      name: node/default
+      tag: "10.20"
+    steps:
+      - run: node -v
+      - checkout
+      - run: yarn install
+      - run: yarn run keygen
+      - run: yarn run build
+      - run: yarn run clean
+workflows:
+    build-and-clean:
+      jobs:
+        - build-and-clean
